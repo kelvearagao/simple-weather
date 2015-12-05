@@ -18,6 +18,40 @@ $ mvn exec:java -Dexec.mainClass=org.sonatype.mavenbook.weather.Main \
   -Dexec.args="70112"
 ```
 
+## Some Maven commands
+
+### The Maven Exec Plugin
+
+The Exec plugin allows you to execute Java classes and other scripts.
+
+```
+$ mvn help:describe -Dplugin=exec -Dfull
+```
+
+This will list all of the goals that are available in the Maven Exec plugin. The Help plugin will also list all of the valid parameters for the Exec plugin. If you would like to customize the behavior of the Exec plugin you should use the documentation provided by help:describe as a guide.
+
+### Exploring Your Project Dependencies
+
+You can use the Maven Dependency plugin to print out a list of dependencies.
+
+```
+$ mvn dependency:resolve
+```
+
+The Dependency plugin is going to print out the final combination of dependencies under which your project is being compiled. If you would like to know about the entire dependency tree of your project, you can run the dependency:tree goal.
+
+```
+$ mvn dependency:tree
+```
+
+If you’re truly adventurous or want to see the full dependency trail, including artifacts that were rejected due to conflicts and other reasons, run Maven with the -X debug flag.
+
+```
+$ mvn install -X
+```
+
+In the debug output, we see some of the guts of the dependency management system at work. What you see here is the tree of dependencies for this project. Maven is printing out the full Maven coordinates for all of your project’s dependencies and the mechanism at work.
+
 # Installing Maven
 
 The following sections outline the recommended best-practice for installing Maven on a variety of operating systems.
